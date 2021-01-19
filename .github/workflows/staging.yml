@@ -29,6 +29,7 @@ jobs:
           Stop-WebSite 'staging.${{ github.event.repository.name }}'
           Copy-Item ./* C:/websites-wp/${{ github.event.repository.name }} -Recurse -Force 
           Start-WebSite 'staging.${{ github.event.repository.name }}'
+          Remove-Item ./* -Recurse -Force
         
 
 
