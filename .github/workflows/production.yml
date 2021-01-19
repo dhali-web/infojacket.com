@@ -1,4 +1,5 @@
-# This is a basic workflow to help you get started with Actions
+# Publish files to IIS using GitHub Self-hosted Runner
+# Production Server Setup
 
 name: CI/CD IIS Production Server Publisher
 
@@ -15,20 +16,33 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    # The type of runner that the job will run on [Self-hosted Runner]
     runs-on: [wp1]
-    
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      
+      - name: Deploy to IIS Staging started
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo 'staging.${{ github.event.repository.name }}'
+                            
+      - name: IIS Stopped for ${{ github.event.repository.name }}
+        run: |
+          Import-Module WebAdministration
+          Stop-WebSite 'staging.${{ github.event.repository.name }}'
+          
+      - name: Copy files into IIS
+        run: |
+          Copy-Item ./* C:/websites-wp/${{ github.event.repository.name }} -Recurse -Force 
+                    
+      - name: IIS Started for ${{ github.event.repository.name }}
+        run: |
+          Start-WebSite 'staging.${{ github.event.repository.name }}'
+                    
+      - name: Deployment Cleanup
+        run: |
+          Remove-Item ./* -Recurse -Force
+
+
