@@ -1,1 +1,1 @@
-<h1>infojacket.com PHP 25</h1>
+<h1>infojacket.com PHP 26</h1>
