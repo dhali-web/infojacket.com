@@ -23,16 +23,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Deploy to IIS
+      - name: Deploy to IIS Staging
         run: |
           Import-Module WebAdministration
-          Stop-WebSite '${{ github.event.repository.name }}'
-          iisreset /stop
+          Stop-WebSite 'staging.${{ github.event.repository.name }}'
           Copy-Item ./* C:/websites-wp/${{ github.event.repository.name }} -Recurse -Force 
-          iisreset /start
-          Start-WebSite '${{ github.event.repository.name }}'
+          Start-WebSite 'staging.${{ github.event.repository.name }}'
         
-      # Runs a single command using the runners shell
+
+
+# Runs a single command using the runners shell
 #       - name: Run a one-line script
 #         env:
 #           REPOA: ${{ github.event.repository.name }}
