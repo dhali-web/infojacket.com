@@ -25,7 +25,7 @@ jobs:
       
       - name: Deploy to IIS Staging started
         run: |
-          run: echo 'staging.${{ github.event.repository.name }}'
+          echo 'staging.${{ github.event.repository.name }}'
                             
       - name: IIS Stopped for ${{ github.event.repository.name }}
         run: |
