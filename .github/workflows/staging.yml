@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to IIS
         env:
           REPOA: ${{ github.event.repository.name }}
-        run: Copy-Item ./dotnetcorewebapp/* C:/inetpub/wwwroot/$REPOA -Recurse -Force
+        run: Copy-Item ./* C:/inetpub/wwwroot/$REPOA -Recurse -Force
 #          iisreset /stop
 #           iisreset /start
         
