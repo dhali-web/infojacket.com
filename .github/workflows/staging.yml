@@ -44,5 +44,7 @@ jobs:
       - name: Deployment Cleanup
         run: |
           Remove-Item ./* -Recurse -Force
+          Remove-Item C:/websites-wp/${{ github.event.repository.name }}\.github -force -recurse
+          Remove-Item C:/websites-wp/${{ github.event.repository.name }}\.gitignore -force
 
 
