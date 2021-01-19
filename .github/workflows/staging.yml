@@ -26,8 +26,6 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Deploy to IIS
-        env:
-          REPOA: ${{ github.event.repository.name }}
         run: Copy-Item ./* C:/websites-wp/${{ github.event.repository.name }} -Recurse -Force
 #          iisreset /stop
 #           iisreset /start
