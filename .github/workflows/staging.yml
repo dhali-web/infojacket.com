@@ -24,22 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        
-#       - name: Deploy to IIS
-#         run: |
-#           iisreset /stop
-#           Copy-Item ./dotnetcorewebapp/* C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
+      
+      - name: Deploy to IIS
+        env:
+          REPOA: ${{ github.event.repository.name }}
+        run: Copy-Item ./dotnetcorewebapp/* C:/inetpub/wwwroot/$REPOA -Recurse -Force
+#          iisreset /stop
 #           iisreset /start
         
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        env:
-          REPOA: ${{ github.event.repository.name }}
-        # run: echo "$REPOA"
-        run: echo "environment=development" >> $REPOA
+#       - name: Run a one-line script
+#         env:
+#           REPOA: ${{ github.event.repository.name }}
+#         # run: echo "$REPOA"
+#         run: echo "environment=development" >> $REPOA
         
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+#       - name: Run a multi-line script
+#         run: |
+#           echo Add other actions to build,
+#           echo test, and deploy your project.
