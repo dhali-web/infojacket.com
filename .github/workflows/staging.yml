@@ -23,14 +23,29 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Deploy to IIS Staging
+      - name: Deploy to IIS Staging started
+        run: |
+          run: echo 'staging.${{ github.event.repository.name }}'
+                            
+      - name: IIS Stopped for ${{ github.event.repository.name }}
         run: |
           Import-Module WebAdministration
           Stop-WebSite 'staging.${{ github.event.repository.name }}'
+          
+      - name: Copy files into IIS
+        run: |
           Copy-Item ./* C:/websites-wp/${{ github.event.repository.name }} -Recurse -Force 
+                    
+      - name: IIS Started for ${{ github.event.repository.name }}
+        run: |
           Start-WebSite 'staging.${{ github.event.repository.name }}'
+                    
+      - name: Deployment Cleanup
+        run: |
           Remove-Item ./* -Recurse -Force
-        
+
+
+
 
 
 # Runs a single command using the runners shell
