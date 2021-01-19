@@ -26,12 +26,12 @@ jobs:
       
       - name: Deploy to IIS Staging started
         run: |
-          echo 'staging.${{ github.event.repository.name }}'
+          echo '${{ github.event.repository.name }}'
                             
       - name: IIS Stopped for ${{ github.event.repository.name }}
         run: |
           Import-Module WebAdministration
-          Stop-WebSite 'staging.${{ github.event.repository.name }}'
+          Stop-WebSite '${{ github.event.repository.name }}'
           
       - name: Copy files into IIS
         run: |
@@ -39,7 +39,7 @@ jobs:
                     
       - name: IIS Started for ${{ github.event.repository.name }}
         run: |
-          Start-WebSite 'staging.${{ github.event.repository.name }}'
+          Start-WebSite '${{ github.event.repository.name }}'
                     
       - name: Deployment Cleanup
         run: |
