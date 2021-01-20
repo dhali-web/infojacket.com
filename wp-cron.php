@@ -17,7 +17,7 @@
  */
 
 ignore_user_abort( true );
-
+ 
 /* Don't make the request block till we finish, if possible. */
 if ( function_exists( 'fastcgi_finish_request' ) && version_compare( phpversion(), '7.0.16', '>=' ) ) {
 	if ( ! headers_sent() ) {

@@ -14,7 +14,7 @@ define( 'XMLRPC_REQUEST', true );
 
 // Some browser-embedded clients send cookies. We don't want them.
 $_COOKIE = array();
-
+ 
 // $HTTP_RAW_POST_DATA was deprecated in PHP 5.6 and removed in PHP 7.0.
 // phpcs:disable PHPCompatibility.Variables.RemovedPredefinedGlobalVariables.http_raw_post_dataDeprecatedRemoved
 if ( ! isset( $HTTP_RAW_POST_DATA ) ) {

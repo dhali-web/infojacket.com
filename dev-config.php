@@ -16,4 +16,3 @@ define('DB_PASSWORD', 'b701vGHPb0glQ4yACFFG');
 /** MySQL hostname */
 define('DB_HOST', 'dev.dhali.com');
 
-

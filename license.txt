@@ -23,7 +23,7 @@ permission notices:
 
   Wherever third party code has been used, credit has been given in the code's
   comments.
-
+ 
   b2 is released under the GPL
 
 and

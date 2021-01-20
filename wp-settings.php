@@ -14,7 +14,7 @@
  * @since 1.0.0
  */
 define( 'WPINC', 'wp-includes' );
-
+ 
 /**
  * Version information for the current WordPress release.
  *
