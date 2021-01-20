@@ -2,6 +2,7 @@
 /*
 !wp-content/
 
+wp-activate.php
 # ignore everything in the "wp-content" directory, except:
 # mu-plugins, plugins, and themes directories
 wp-content/*
