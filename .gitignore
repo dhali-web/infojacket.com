@@ -1,12 +1,13 @@
 # This ignores root files & root directories, then un-ignores the root bin directory.
 /*
-/*/
-!/wp-content/
-!/wp-config.php
-!/dev-config.php
-!/staging-config.php
-!/.htaccess
-!/web.config
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# mu-plugins, plugins, and themes directories
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
 
 # ignore these plugins
 wp-content/plugins/hello.php
