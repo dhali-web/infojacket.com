@@ -1,2 +1,5 @@
-# This ignores root files & root directories, then un-ignores the root bin directory.
-/*
+# ignore everything
+*
+
+# except
+!wp-activate.php
