@@ -1,5 +1,23 @@
-# ignore everything
+# ignore everything in Root Dir
 *
 
-# except
+# except these in Root Dir
 !wp-config.php
+!dev-config.php
+!staging-config.php
+!.htaccess
+!web.config
+!wp-content
+!wp-content/**
+
+# in the wp-content folder ~ ignore themes
+wp-content/themes/twenty**
+
+# in the wp-content folder ~ ignore hello.php free plugin
+wp-content/plugins/hello.php
+wp-content/plugins/akismet
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
