@@ -22,37 +22,28 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 // ** MySQL settings - You can get this info from your web host ** //
-if (stristr($_SERVER['SERVER_NAME'], 'localhost')) {
 
-	/** Load dev config file. */
-	include(dirname(__FILE__) . '/dev-config.php');
-} elseif (stristr($_SERVER['SERVER_NAME'], 'staging')) {
+//Using environment variables for DB connection information
 
-	/** Load staging config file. */
-	include(dirname(__FILE__) . '/staging-config.php');
-} else {
-	//Using environment variables for DB connection information
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
 
-	// ** MySQL settings - You can get this info from your web host ** //
-	/** The name of the database for WordPress */
+$connectstr_dbhost = getenv('DATABASE_HOST');
+$connectstr_dbusername = getenv('DATABASE_USERNAME');
+$connectstr_dbpassword = getenv('DATABASE_PASSWORD');
+$connectst_dbname = getenv('DATABASE_NAME');
 
-	$connectstr_dbhost = getenv('DATABASE_HOST');
-	$connectstr_dbusername = getenv('DATABASE_USERNAME');
-	$connectstr_dbpassword = getenv('DATABASE_PASSWORD');
-	$connectst_dbname = getenv('DATABASE_NAME');
+/** MySQL database name */
+define('DB_NAME', $connectst_dbname);
 
-	/** MySQL database name */
-	define('DB_NAME', $connectst_dbname);
+/** MySQL database username */
+define('DB_USER', $connectstr_dbusername);
 
-	/** MySQL database username */
-	define('DB_USER', $connectstr_dbusername);
+/** MySQL database password */
+define('DB_PASSWORD', $connectstr_dbpassword);
 
-	/** MySQL database password */
-	define('DB_PASSWORD', $connectstr_dbpassword);
-
-	/** MySQL hostname */
-	define('DB_HOST', $connectstr_dbhost);
-}
+/** MySQL hostname */
+define('DB_HOST', $connectstr_dbhost);
 
 
 /** Database Charset to use in creating database tables. */
