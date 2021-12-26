@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base configuration for WordPress
  *
@@ -17,32 +18,40 @@
  *
  * @package WordPress
  */
- 
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
- // ** MySQL settings - You can get this info from your web host ** //
- if ( stristr( $_SERVER['SERVER_NAME'], 'localhost' ) ) {
+// ** MySQL settings - You can get this info from your web host ** //
+if (stristr($_SERVER['SERVER_NAME'], 'localhost')) {
 
 	/** Load dev config file. */
-	include( dirname( __FILE__ ) . '/dev-config.php');
-
-} elseif ( stristr( $_SERVER['SERVER_NAME'], 'staging' ) ) {
+	include(dirname(__FILE__) . '/dev-config.php');
+} elseif (stristr($_SERVER['SERVER_NAME'], 'staging')) {
 
 	/** Load staging config file. */
-	include( dirname( __FILE__ ) . '/staging-config.php');
-
+	include(dirname(__FILE__) . '/staging-config.php');
 } else {
+	//Using environment variables for DB connection information
+
+	// ** MySQL settings - You can get this info from your web host ** //
 	/** The name of the database for WordPress */
-	define('DB_NAME', 'infojacket.com');
+
+	$connectstr_dbhost = getenv('DATABASE_HOST');
+	$connectstr_dbusername = getenv('DATABASE_USERNAME');
+	$connectstr_dbpassword = getenv('DATABASE_PASSWORD');
+	$connectst_dbname = getenv('DATABASE_NAME');
+
+	/** MySQL database name */
+	define('DB_NAME', $connectst_dbname);
 
 	/** MySQL database username */
-	define('DB_USER', 'infojacket-db');
+	define('DB_USER', $connectstr_dbusername);
 
 	/** MySQL database password */
-	define('DB_PASSWORD', 'b701vGHPb0glQ4yACFFG');
+	define('DB_PASSWORD', $connectstr_dbpassword);
 
 	/** MySQL hostname */
-	define('DB_HOST', 'wp1.dhali.com');
+	define('DB_HOST', $connectstr_dbhost);
 }
 
 
@@ -61,14 +70,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'heSOr~*XR=Mb0x.T9Kk1tw#:xq`V,z`&.y#t=bU!sGlz#V)+=CuFFf+;X}xR_d-;' );
-define( 'SECURE_AUTH_KEY',  '-rkd_4iHe0m0nt&Bn;Uj]ic2<,R:fdr&l%Hc0,#uYZvbo.#qe;:=v+32,,F=Q9q&' );
-define( 'LOGGED_IN_KEY',    'IeRP$+QYg0#n(TN!D@LdnbgMqVym^;%P):dL!>[b Yi?`{C!*sj(g.:89D~K|#hj' );
-define( 'NONCE_KEY',        'ak=SL2g!1H{K~8wap,[_6:GutsI9+|]ZBPZKMn/-FIe<i~R7Y?n<AEK(<i *:Wsd' );
-define( 'AUTH_SALT',        'k,rLO/h9:yHDB{%e[IWo}W8%_rjfpwp; (P=Ju3y1zu]Bmi>Rkx7pX3}#WiS;7!*' );
-define( 'SECURE_AUTH_SALT', 'S!b08<_t3:[Oxy4SImK8=Dl]^UyDb5,9HwYMD>F*:R+=gGt#Stvj)WGV#.n%YLk(' );
-define( 'LOGGED_IN_SALT',   '1*qr;g^2y_nrFJtd$MC,{~y4z-t`glr-CmHKd !:KG[K:n:=F&Xd{VAwH9Qm*@M+' );
-define( 'NONCE_SALT',       'mSz7+misT{S7+xk>|@W:Qev;%vVya(oAri}Snpxvn@j_UhOEB;RPRVFSTWMpJlN]' );
+define('AUTH_KEY',         'heSOr~*XR=Mb0x.T9Kk1tw#:xq`V,z`&.y#t=bU!sGlz#V)+=CuFFf+;X}xR_d-;');
+define('SECURE_AUTH_KEY',  '-rkd_4iHe0m0nt&Bn;Uj]ic2<,R:fdr&l%Hc0,#uYZvbo.#qe;:=v+32,,F=Q9q&');
+define('LOGGED_IN_KEY',    'IeRP$+QYg0#n(TN!D@LdnbgMqVym^;%P):dL!>[b Yi?`{C!*sj(g.:89D~K|#hj');
+define('NONCE_KEY',        'ak=SL2g!1H{K~8wap,[_6:GutsI9+|]ZBPZKMn/-FIe<i~R7Y?n<AEK(<i *:Wsd');
+define('AUTH_SALT',        'k,rLO/h9:yHDB{%e[IWo}W8%_rjfpwp; (P=Ju3y1zu]Bmi>Rkx7pX3}#WiS;7!*');
+define('SECURE_AUTH_SALT', 'S!b08<_t3:[Oxy4SImK8=Dl]^UyDb5,9HwYMD>F*:R+=gGt#Stvj)WGV#.n%YLk(');
+define('LOGGED_IN_SALT',   '1*qr;g^2y_nrFJtd$MC,{~y4z-t`glr-CmHKd !:KG[K:n:=F&Xd{VAwH9Qm*@M+');
+define('NONCE_SALT',       'mSz7+misT{S7+xk>|@W:Qev;%vVya(oAri}Snpxvn@j_UhOEB;RPRVFSTWMpJlN]');
 
 /**#@-*/
 
@@ -92,13 +101,13 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
+if (!defined('ABSPATH')) {
+	define('ABSPATH', __DIR__ . '/');
 }
 
 /** Sets up WordPress vars and included files. */
