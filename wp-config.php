@@ -21,12 +21,6 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-// ** MySQL settings - You can get this info from your web host ** //
-
-//Using environment variables for DB connection information
-
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
 
 $connectstr_dbhost = getenv('DATABASE_HOST');
 $connectstr_dbusername = getenv('DATABASE_USERNAME');
