@@ -1,5 +1,5 @@
 # ignore everything in Root Dir
-*
+# *
 
 # except these in Root Dir
 !wp-config.php
