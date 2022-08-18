@@ -39,6 +39,8 @@ define('DB_PASSWORD', $connectstr_dbpassword);
 /** MySQL hostname */
 define('DB_HOST', $connectstr_dbhost);
 
+/** MySQL force SSL */
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');
